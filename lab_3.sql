@@ -1,0 +1,45 @@
+CREATE DATABASE IF NOT EXISTS HETAV;
+
+USE HETAV;
+
+CREATE TABLE IF NOT EXISTS c4(
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    enrollment_no INT UNIQUE
+);
+
+DESC c4;
+
+INSERT INTO c4
+VALUES
+(1, "Hetav Shah", 220179),
+(2, "a", 220128),
+(3, "b", 220189),
+(4, "c", 220274),
+(5, "d", 220253),
+(6, "HEHEHEEHEHHEHE", 220292);
+
+SELECT * FROM c4;
+
+SELECT * FROM c4
+WHERE id > 3;
+
+SELECT * FROM c4
+ORDER BY enrollment_no DESC;
+
+SELECT * FROM c4
+WHERE name LIKE "H%";
+
+SELECT * FROM c4
+WHERE name IN ("a", "b", "c");
+
+SELECT * FROM c4
+WHERE name NOT IN ("a", "b", "c");
+
+SELECT * FROM c4
+WHERE enrollment_no BETWEEN 220179 AND 220274;
+
+SELECT * FROM c4
+WHERE enrollment_no NOT BETWEEN 220179 AND 220274;
+
+DROP DATABASE IF EXISTS HETAV;
