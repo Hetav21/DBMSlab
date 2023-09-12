@@ -21,4 +21,18 @@ VALUES
 
 SELECT * FROM c4;
 
+INSERT INTO c4 
+VALUES
+(7, "new", 220142);
+
+SELECT * FROM c4;
+
+UPDATE c4 SET name = "Mystic E" WHERE id = 7; 
+
+SELECT * FROM c4;
+
+DELETE FROM c4 WHERE name = "Mystic E";
+
+SELECT * FROM c4;
+
 DROP DATABASE IF EXISTS HETAV;
