@@ -45,11 +45,11 @@ START TRANSACTION;
 
 SAVEPOINT save_me;
 
-INSERT INTO c4
+INSERT INTO c4 
 VALUES
-(7, "E", 220233);
+(7, "ejiae", 220163, 100);  
 
-SELECT * FORM c4;
+SELECT * FROM c4;
 
 /*  */
 ROLLBACK TO save_me;
