@@ -36,6 +36,11 @@ DELETE FROM c4 WHERE enrollment_no=220274;
 SELECT * FROM c4;
 
 /*  */
+ROLLBACK;
+
+SELECT * FROM c4;
+
+/*  */
 START TRANSACTION;
 
 SAVEPOINT save_me;
@@ -51,10 +56,6 @@ ROLLBACK TO save_me;
 
 SELECT * FROM c4;
 
-/*  */
-ROLLBACK;
-
-SELECT * FROM c4;
 /*  */
 
 DROP DATABASE IF EXISTS HETAV;
