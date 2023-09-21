@@ -1,0 +1,48 @@
+CREATE DATABASE IF NOT EXISTS HETAV;
+
+USE HETAV;
+
+CREATE TABLE IF NOT EXISTS c4(
+    id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    enrollment_no INT UNIQUE
+);
+
+DESC c4;
+
+INSERT INTO c4
+VALUES
+(1, "Hetav Shah", 220179),
+(2, "a", 220128),
+(3, "b", 220189),
+(4, "c", 220274),
+(5, "d", 220253),
+(6, "HEHEHEEHEHHEHE", 220292);
+
+SELECT * FROM c4;
+
+CREATE TABLE cse (id INT, name varchar(50), phone_no BIGINT, age INT, serialNo INT);
+
+DESC cse;
+
+ALTER TABLE cse MODIFY COLUMN name varchar(50) NOT NULL;
+
+DESC cse;
+
+ALTER TABLE cse add unique(phone_no);
+
+ALTER TABLE cse ADD CHECK (age >= 18);
+
+ALTER TABLE cse ALTER age SET DEFAULT 101;
+
+DESC cse;
+
+ALTER TABLE cse ADD PRIMARY KEY(id);
+
+DESC cse;
+
+ALTER TABLE cse ADD FOREIGN KEY(serialNo) REFERENCES c4(id);
+
+DESC cse;
+
+DROP DATABASE IF EXISTS HETAV;
