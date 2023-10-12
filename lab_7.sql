@@ -31,6 +31,8 @@ DESC cse;
 
 ALTER TABLE cse add unique(phone_no);
 
+DESC cse;
+
 ALTER TABLE cse ADD CHECK (age >= 18);
 
 ALTER TABLE cse ALTER age SET DEFAULT 101;
