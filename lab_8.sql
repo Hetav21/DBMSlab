@@ -40,7 +40,7 @@ VALUES
 (7, 4.5),
 (8, 8.4);
 
-SELECT * FROM c4;
+SELECT * FROM marks;
 
 SELECT * FROM c4
 LEFT JOIN marks

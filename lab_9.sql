@@ -1,0 +1,76 @@
+CREATE DATABASE IF NOT EXISTS HETAV;
+
+USE HETAV;
+
+CREATE TABLE IF NOT EXISTS c4(
+    id INT PRIMARY KEY,
+    enrollment_no INT UNIQUE
+);
+
+DESC c4;
+
+INSERT INTO c4
+VALUES
+(1,  220179),
+(2,  220128),
+(3,  220189),
+(4,  220274),
+(5,  220253),
+(6,  220292);
+
+SELECT * FROM c4;
+
+CREATE TABLE IF NOT EXISTS marks(
+    id INT PRIMARY KEY,
+    cgpa INT NOT NULL
+);
+
+DESC marks;
+
+INSERT INTO marks
+VALUES
+(1, 6),
+(2, 7),
+(3, 8),
+(4, 3),
+(5, 9),
+(6, 8),
+(7, 4),
+(8, 8);
+
+SELECT * FROM marks;
+
+SELECT * FROM c4
+UNION
+SELECT * FROM marks;
+
+SELECT * FROM c4
+UNION ALL
+SELECT * FROM marks;
+
+SELECT * FROM c4
+INTERSECT
+SELECT * FROM marks;
+
+SELECT * FROM c4
+EXCEPT
+SELECT * FROM marks
+WHERE marks.id = 1;
+
+SELECT count(id) 
+FROM c4
+GROUP BY id;
+
+SELECT max(cgpa)
+FROM marks;
+
+SELECT min(cgpa)
+FROM marks;
+
+SELECT avg(cgpa)
+FROM marks;
+
+SELECT sum(cgpa)
+FROM marks;
+
+DROP DATABASE IF EXISTS HETAV;
