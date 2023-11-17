@@ -13,8 +13,8 @@ using namespace std;
 
 int row = 6;
 int col = 4;
-string tableName = "BORROW";
-vector<string> rowInfo = { "VARCHAR", "VARCHAR", "VARCHAR", "NUMBER"};
+string tableName = "Job";
+vector<string> rowInfo = { "VARCHAR", "VARCHAR", "NUMBER", "NUMBER"};
 
 // rowInfo can be one of the following:
 // VARCHAR
@@ -83,6 +83,8 @@ public:
 		if (DD.size() == 1) {
 			DD = "0" + DD;
 		}
+
+		transform(MM.begin(), MM.end(), MM.begin(), ::toupper);
 
 		for (int i = 0; i < 12; ++i)
 		{
