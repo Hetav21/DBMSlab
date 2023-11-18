@@ -19,7 +19,7 @@ VALUES
 (105, "Anita", 5000, 50,000, 10),
 (106, "Sneha", 2450, 24,500, 10),
 (107, "Anamika", 2975, 0, 30);
-SELECT * FROM Employee;
+
 
 INSERT INTO Job
 VALUES
@@ -29,7 +29,7 @@ VALUES
 ("FI_ACC", "Account", 4200, 9000),
 ("LEC", "Lecturer", 6000, 17000),
 ("COMP_OP", "Computer Operator", 1500, 3000);
-SELECT * FROM Job;
+
 
 INSERT INTO Deposit
 VALUES
@@ -39,7 +39,10 @@ VALUES
 ("104", "vijay", "andheri", 8000, 20060917),
 ("105", "keyur", "dadar", 7500, 20061119),
 ("106", "mayur", "borivali", 5500, 20061221);
-SELECT * FROM Deposit;
 
+
+SELECT * FROM Deposit;
+SELECT * FROM Job;
+SELECT * FROM Employee;
 
 DROP DATABASE IF EXISTS c4;
