@@ -16,8 +16,8 @@ VALUES
 (102, "Snehal", 1600, 300, 25),
 (103, "Adama", 1100, 0, 20),
 (104, "Aman", 3000, 0, 15),
-(105, "Anita", 5000, 50,000, 10),
-(106, "Sneha", 2450, 24,500, 10),
+(105, "Anita", 5000, 50000, 10),
+(106, "Sneha", 2450, 24500, 10),
 (107, "Anamika", 2975, 0, 30);
 
 
@@ -44,5 +44,10 @@ VALUES
 SELECT * FROM Deposit;
 SELECT * FROM Job;
 SELECT * FROM Employee;
+
+/* 2 */
+SELECT a_no, amount FROM
+Deposit
+WHERE a_date BETWEEN 20060101 AND 20060725
 
 DROP DATABASE IF EXISTS c4;
