@@ -12,13 +12,13 @@ CREATE TABLE Borrow (loanno VARCHAR(5) ,cname VARCHAR(15) ,bname VARCHAR(10) , a
 
 INSERT INTO Employee
 VALUES
-(101, "Smith", 800, 0, 20),
+(101, "Smith", 800, NULL, 20),
 (102, "Snehal", 1600, 300, 25),
 (103, "Adama", 1100, 0, 20),
-(104, "Aman", 3000, 0, 15),
+(104, "Aman", 3000, NULL, 15),
 (105, "Anita", 5000, 50000, 10),
 (106, "Sneha", 2450, 24500, 10),
-(107, "Anamika", 2975, 0, 30);
+(107, "Anamika", 2975, NULL, 30);
 
 
 INSERT INTO Job
@@ -73,6 +73,10 @@ SELECT emp_name, emp_no, emp_sal FROM
 Employee
 WHERE emp_name LIKE ('Ani__');
 
+/* 3 */
+SELECT * FROM
+Employee
+WHERE emp_comm IS NOT NULL;
 
 
 DROP DATABASE IF EXISTS c4;
