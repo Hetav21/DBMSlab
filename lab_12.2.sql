@@ -56,7 +56,9 @@ Job
 WHERE min_sal > 4000;
 
 /* 4 */
-
+SELECT emp_name as name, emp_sal FROM
+Employee 
+WHERE dept_no = 10;
 
 /* 5 */
 SELECT emp_no, emp_name, dept_no FROM
