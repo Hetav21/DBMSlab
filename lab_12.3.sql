@@ -98,7 +98,32 @@ CREATE TABLE SUP1 AS SELECT emp_no , emp_name FROM Employee;
 
 /* 8 */
 CREATE TABLE SUP2 AS SELECT * FROM EMPLOYEE WHERE 
-emp_comm =NULL;
+emp_comm IS NULL;
 
+/* 9 */
+INSERT INTO SUP2 SELECT * FROM Employee WHERE emp_name LIKE ('_n___');
+
+/* 10 */
+TRUNCATE TABLE sup1;
+
+/* 11 */
+DELETE FROM SUPPLIER WHERE emp_no=103; 
+
+/* 12 */
+ALTER TABLE sup2
+RENAME TO sup3;
+
+/* 13 */
+DROP TABLE SUP1;
+
+/* 14 */
+UPDATE EMPLOYEE 
+SET dept_no = 10 
+WHERE EMP_NAME LIKE ("_m%"); 
+
+/* 15 */
+UPDATE EMPLOYEE 
+SET EMP_NAME= "HETAV"
+WHERE EMP_NO=103;
 
 DROP DATABASE IF EXISTS c4;
