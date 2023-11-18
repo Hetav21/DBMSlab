@@ -11,10 +11,10 @@ using namespace std;
 // and PASTE the table in input.txt
 // WITHOUT the heading row
 
-int row = 6;
-int col = 4;
-string tableName = "Job";
-vector<string> rowInfo = { "VARCHAR", "VARCHAR", "NUMBER", "NUMBER"};
+int row = 10;
+int col = 2;
+string tableName = "Branch";
+vector<string> rowInfo = { "VARCHAR", "VARCHAR"};
 
 // rowInfo can be one of the following:
 // VARCHAR
