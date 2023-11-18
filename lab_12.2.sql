@@ -76,7 +76,10 @@ WHERE emp_name LIKE ('Ani__');
 /* 3 */
 SELECT * FROM
 Employee
-WHERE emp_comm IS NOT NULL;
+WHERE emp_comm IS NOT NULL AND emp_name LIKE ('_n___');
+
+/* 4 */
+
 
 
 DROP DATABASE IF EXISTS c4;
