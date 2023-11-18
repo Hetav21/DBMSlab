@@ -83,4 +83,7 @@ SELECT * FROM
 Employee
 WHERE emp_comm IS NULL AND emp_name LIKE ('__a%');
 
+/* 5 */
+
+
 DROP DATABASE IF EXISTS c4;
