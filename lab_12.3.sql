@@ -44,7 +44,12 @@ SELECT * FROM Deposit;
 SELECT * FROM Job;
 SELECT * FROM Employee;
 
+/* 1 */
+ SELECT SUM(amount) FROM 
+ Deposit; 
 
+/* 2 */
 
+/* 3 */
 
 DROP DATABASE IF EXISTS c4;
