@@ -84,6 +84,8 @@ Employee
 WHERE emp_comm IS NULL AND emp_name LIKE ('__a%');
 
 /* 5 */
-
+SELECT * FROM
+Job
+WHERE job_id LIKE '%#_%' ESCAPE '#';
 
 DROP DATABASE IF EXISTS c4;
