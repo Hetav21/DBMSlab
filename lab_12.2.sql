@@ -48,6 +48,13 @@ SELECT * FROM Employee;
 /* 2 */
 SELECT a_no, amount FROM
 Deposit
-WHERE a_date BETWEEN 20060101 AND 20060725
+WHERE a_date BETWEEN 20060101 AND 20060725;
+
+/* 3 */
+SELECT job_id, job_title FROM
+Job
+WHERE min_sal > 4000;
+
+/* 4 */
 
 DROP DATABASE IF EXISTS c4;
