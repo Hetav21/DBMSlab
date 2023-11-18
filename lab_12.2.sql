@@ -40,7 +40,7 @@ VALUES
 ("105", "keyur", "dadar", 7500, 20061119),
 ("106", "mayur", "borivali", 5500, 20061221);
 
-
+/* 1 */
 SELECT * FROM Deposit;
 SELECT * FROM Job;
 SELECT * FROM Employee;
