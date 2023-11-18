@@ -65,5 +65,14 @@ SELECT emp_no, emp_name, dept_no FROM
 Employee 
 WHERE dept_no BETWEEN 10 AND 20;
 
+/* 1 */
+SELECT emp_name from Employee WHERE emp_name LIKE ('A_a%');
+    
+/* 2 */
+SELECT emp_name, emp_no, emp_sal FROM
+Employee
+WHERE emp_name LIKE ('Ani__');
+
+
 
 DROP DATABASE IF EXISTS c4;
