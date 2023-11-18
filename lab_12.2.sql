@@ -57,4 +57,11 @@ WHERE min_sal > 4000;
 
 /* 4 */
 
+
+/* 5 */
+SELECT emp_no, emp_name, dept_no FROM
+Employee 
+WHERE dept_no BETWEEN 10 AND 20;
+
+
 DROP DATABASE IF EXISTS c4;
