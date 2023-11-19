@@ -111,6 +111,9 @@ ON Deposit.CNAME = Customers.CNAME
 WHERE City = "BOMBAY";
 
 /* 4 */
-
+SELECT round(SUM(emp_sal)) as Sum, round(AVG(emp_sal)) as Average,
+round(MAX(emp_sal)) as Maximum, round(MIN(emp_sal)) as Minimum
+FROM
+Employee;
 
 DROP DATABASE IF EXISTS c4;
