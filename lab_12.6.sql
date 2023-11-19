@@ -102,6 +102,15 @@ Deposit
 ON Deposit.CNAME = Customers.CNAME
 WHERE City = "NAGPUR";
 
+/* 3 */
+SELECT MAX(AMOUNT) FROM
+Customers
+INNER JOIN
+Deposit
+ON Deposit.CNAME = Customers.CNAME
+WHERE City = "BOMBAY";
+
+/* 4 */
 
 
 DROP DATABASE IF EXISTS c4;
