@@ -94,4 +94,14 @@ SELECT SUM(amount) FROM
 DEPOSITERS
 WHERE a_date > 19960101;
 
+/* 2 */
+SELECT SUM(AMOUNT) FROM
+Customers
+INNER JOIN
+Deposit
+ON Deposit.CNAME = Customers.CNAME
+WHERE City = "NAGPUR";
+
+
+
 DROP DATABASE IF EXISTS c4;
