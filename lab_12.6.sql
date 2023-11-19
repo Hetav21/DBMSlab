@@ -116,4 +116,10 @@ round(MAX(emp_sal)) as Maximum, round(MIN(emp_sal)) as Minimum
 FROM
 Employee;
 
+/* 5 */
+SELECT round(MAX(emp_sal)) as Maximum, round(MIN(emp_sal)) as Minimum,round(MAX(emp_sal) - MIN(emp_sal)) as Difference
+FROM
+Employee;
+
+
 DROP DATABASE IF EXISTS c4;
