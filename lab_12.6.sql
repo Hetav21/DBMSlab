@@ -89,7 +89,9 @@ VALUES
 ("105", "keyur", "dadar", 7500, 20061119),
 ("106", "mayur", "borivali", 5500, 20061221);
 
-
-
+/* 1 */
+SELECT SUM(amount) FROM
+DEPOSITERS
+WHERE a_date > 19960101;
 
 DROP DATABASE IF EXISTS c4;
