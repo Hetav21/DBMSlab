@@ -13,7 +13,9 @@ VALUES
 ("106", "SANDIP", "ANDHERI", 2000.00, 19960331),
 ("107", "SHIVANI", "VIRAR", 1000.00, 19950905),
 ("108", "KRANTI", "NEHRU PLACE", 5000.00, 19950702),
-("109", "MINU", "POWAI", 7000.00, 19950810);
+("109", "MINU", "POWAI", 7000.00, 20000810);
+
+DROP TABLE DEPOSIT;
 
 
 CREATE TABLE BRANCH(BNAME VARCHAR(18),CITY VARCHAR(18));
@@ -120,6 +122,13 @@ Employee;
 SELECT round(MAX(emp_sal)) as Maximum, round(MIN(emp_sal)) as Minimum,round(MAX(emp_sal) - MIN(emp_sal)) as Difference
 FROM
 Employee;
+
+/* 6 */
+SELECT COUNT(ACTNO) as Employees_Hired FROM DEPOSIT
+WHERE ADATE >= 19950101 AND ADATE <= 19981231;
+
+/* 7 */
+
 
 
 DROP DATABASE IF EXISTS c4;
