@@ -88,13 +88,14 @@ SELECT
 FROM Employee;
 
 /* 6 */
+SELECT CONCAT(EMP_NAME,' earns ',round(EMP_SAL),' monthly') FROM EMPLOYEE;
 
 
 /* 7 */
 
 
 /* 8 */
- SELECT
+SELECT
     emp_sal + COALESCE(emp_comm, 0) AS annual_compensation
 FROM Employee; 
 
