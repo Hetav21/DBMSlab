@@ -92,6 +92,10 @@ SELECT CONCAT(EMP_NAME,' earns ',round(EMP_SAL),' monthly') FROM EMPLOYEE;
 
 
 /* 7 */
+SELECT CONCAT((SYSDATE, 'fmDDTH') , ' of ', (SYSDATE, 
+'fmMonth') , ', ' ,(SYSDATE, 
+'YYYY') , ', ' , (SYSDATE, 
+'HH24:MI:SS AM'), "DATE") FROM DUAL; 
 
 
 /* 8 */
