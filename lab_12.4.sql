@@ -37,11 +37,11 @@ VALUES
 ("106", "mayur", "borivali", 5500, 20061221);
 
 CREATE TABLE Empoyee_Job AS 
-SELECT * FROM 
+SELECT Employee.job_id, EMP_NAME, emp_no, job_title, emp_sal, Deposit.a_date FROM 
 EMPLOYEE 
 JOIN
 JOB
-ON Employee.job_id = Job.job_id;
+ON Employee.job_id = Job.job_id
 JOIN
 Deposit
 on Employee.emp_no = Deposit.a_no;
@@ -92,11 +92,14 @@ SELECT CONCAT(EMP_NAME,' earns ',round(EMP_SAL),' monthly') FROM EMPLOYEE;
 
 
 /* 7 */
-SELECT CONCAT((SYSDATE, 'fmDDTH') , ' of ', (SYSDATE, 
-'fmMonth') , ', ' ,(SYSDATE, 
-'YYYY') , ', ' , (SYSDATE, 
-'HH24:MI:SS AM'), "DATE") FROM DUAL; 
-
+SELECT
+emp_name AS 'Employee Name',
+a_date AS 'Hire Date',
+TIMESTAMPDIFF(MONTH, a_date, CURDATE()) AS 'Months Employed',
+DAYNAME(a_date) AS 'Start Day'
+FROM Empoyee_Job
+ORDER BY FIELD(DAYNAME(a_date), 'Monday', 'Tuesday', 'Wednesday',
+'Thursday', 'Friday', 'Saturday', 'Sunday');
 
 /* 8 */
 SELECT
