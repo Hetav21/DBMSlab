@@ -31,8 +31,8 @@ VALUES
 ("POWAI", "BOMBAY");
 
 
-CREATE TABLE CUSTOMERS(CNAME VARCHAR(19)  PRIMARY KEY,CITY VARCHAR(18));
-INSERT INTO CUSTOMERS
+CREATE TABLE Hetav_Customers(CNAME VARCHAR(19)  PRIMARY KEY,CITY VARCHAR(18));
+INSERT INTO Hetav_Customers
 VALUES
 ("ANIL", "CALCUTTA"),
 ("SUNIL", "DELHI"),
@@ -113,32 +113,36 @@ VALUES
 ("108", "KRANTI", "NEHRU PLACE", 5000.00, 19950702, NULL),
 ("109", "MINU", "POWAI", 7000.00, 19950810, NULL);
 
-CREATE TABLE DEPARTMENT (emp_no VARCHAR(5) ,city VARCHAR(18));
+CREATE TABLE Hetav_Department (emp_no VARCHAR(5) ,city VARCHAR(18));
+
+INSERT INTO  Hetav_Department
+VALUES
+("107", "Ahmedabad");
 
 /* 1 */
-SELECT CUSTOMERS.CNAME, CITY, ACTNO, Hetav_Deposit.BNAME, Hetav_Deposit.AMOUNT, Hetav_Borrow.AMOUNT ,ADATE, LOANNO FROM
-CUSTOMERS
+SELECT Hetav_Customers.CNAME, CITY, ACTNO, Hetav_Deposit.BNAME, Hetav_Deposit.AMOUNT, Hetav_Borrow.AMOUNT ,ADATE, LOANNO FROM
+Hetav_Customers
 INNER JOIN
 Hetav_Deposit
-ON CUSTOMERS.CNAME = Hetav_Deposit.CNAME
+ON Hetav_Customers.CNAME = Hetav_Deposit.CNAME
 INNER JOIN
 Hetav_Borrow
-ON CUSTOMERS.CNAME = Hetav_Borrow.CNAME
-WHERE CUSTOMERS.CNAME = "ANIL";
+ON Hetav_Customers.CNAME = Hetav_Borrow.CNAME
+WHERE Hetav_Customers.CNAME = "ANIL";
 
 /* 2 */
-SELECT customers.cname FROM
-customers
+SELECT Hetav_Customers.cname FROM
+Hetav_Customers
 INNER JOIN
 Hetav_Deposit
-ON Hetav_Deposit.CNAME = customers.CNAME
+ON Hetav_Deposit.CNAME = Hetav_Customers.CNAME
 INNER JOIN
 Hetav_Borrow
 ON Hetav_Deposit.CNAME = Hetav_Borrow.CNAME
-WHERE customers.CITY = "NAGPUR";
+WHERE Hetav_Customers.CITY = "NAGPUR";
 
 /* 3 */
-SELECT C.CITY FROM CUSTOMERS as C, Hetav_Branch as B 
+SELECT C.CITY FROM Hetav_Customers as C, Hetav_Branch as B 
 WHERE C.CITY=B.CITY;
 
 /* 4 */ 
@@ -147,8 +151,7 @@ FROM Hetav_EMP_NEW as E,Hetav_Deposit as D
 WHERE E.a_no = D.ACTNO;
 
 /* 5 */
-SELECT J.job_id,J.JOB_TITLE,E.DEPT_NO,D.CITY FROM Hetav_Job 
-J,Hetav_Employee E,DEPARTMENT D WHERE J.job_id=E.emp_no AND 
+SELECT * FROM Hetav_Employee E,Hetav_Department D WHERE
 E.DEPT_NO=E.DEPT_NO AND E.DEPT_NO=30; 
 
 /* 6 */
@@ -168,6 +171,5 @@ WHERE joinDate > (
     Hetav_EMP_NEW
     WHERE emp_name = "SCOTT"
 );
-
 
 DROP DATABASE IF EXISTS c4;
