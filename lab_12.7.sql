@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS c4;
+/* CREATE DATABASE IF NOT EXISTS c4;
 
 USE c4;
 
@@ -89,12 +89,120 @@ VALUES
 ("103", "jay", "villeparle", 6500, 20060312),
 ("104", "vijay", "andheri", 8000, 20060917),
 ("105", "keyur", "dadar", 7500, 20061119),
-("106", "mayur", "borivali", 5500, 20061221);
+("106", "mayur", "borivali", 5500, 20061221); */
+
+CREATE DATABASE IF NOT EXISTS c4;
+
+USE c4;
+
+CREATE TABLE
+    DEPOSIT (
+        ACTNO VARCHAR(5),
+        CNAME VARCHAR(18),
+        BNAME VARCHAR(18),
+        AMOUNT INT,
+        ADATE DATE
+    );
+
+INSERT INTO DEPOSIT
+VALUES (
+        "100",
+        "ANIL",
+        "VRCE",
+        1000.00,
+        19950301
+    ), (
+        "101",
+        "SUNIL",
+        "AJNI",
+        5000.00,
+        19960104
+    ), (
+        "102",
+        "MEHUL",
+        "KAROLBAGH",
+        3500.00,
+        19951117
+    ), (
+        "104",
+        "MADHURI",
+        "CHANDI",
+        1200.00,
+        19951217
+    ), (
+        "105",
+        "PRMOD",
+        "M.G.ROAD",
+        3000.00,
+        19960327
+    ), (
+        "106",
+        "SANDIP",
+        "ANDHERI",
+        2000.00,
+        19960331
+    ), (
+        "107",
+        "SHIVANI",
+        "VIRAR",
+        1000.00,
+        19950905
+    ), (
+        "108",
+        "KRANTI",
+        "NEHRU PLACE",
+        5000.00,
+        19950702
+    ), (
+        "109",
+        "MINU",
+        "POWAI",
+        7000.00,
+        19950810
+    );
+
+CREATE TABLE
+    CUSTOMERS(
+        CNAME VARCHAR(19) PRIMARY KEY,
+        CITY VARCHAR(18)
+    );
+
+INSERT INTO CUSTOMERS
+VALUES ("ANIL", "CALCUTTA"), ("SUNIL", "DELHI"), ("MEHUL", "BARODA"), ("MANDAR", "PATNA"), ("MADHURI", "NAGPUR"), ("PRAMOD", "NAGPUR"), ("SANDIP", "SURAT"), ("SHIVANI", "BOMBAY"), ("KRANTI", "BOMBAY"), ("NAREN", "BOMBAY");
+
+CREATE TABLE BRANCH(BNAME VARCHAR(18),CITY VARCHAR(18));
+
+INSERT INTO BRANCH
+VALUES ("VRCE", "NAGPUR"), ("AJNI", "NAGPUR"), ("KAROLBAGH", "DELHI"), ("CHANDI", "DELHI"), ("DHARAMPETH", "NAGPUR"), ("M.G.ROAD", "BANGLORE"), ("ANDHERI", "BOMBAY"), ("VIRAR", "BOMBAY"), ("NEHRU PLACE", "DELHI"), ("POWAI", "BOMBAY");
 
 
+/* 1 */
 
+UPDATE DEPOSIT SET AMOUNT = AMOUNT + (AMOUNT*10/100);
 
+/* 2 */
 
+UPDATE DEPOSIT
+SET
+    AMOUNT = AMOUNT + (AMOUNT * 10 / 100)
+WHERE BNAME = "VRCE";
+
+/* 3 */
+
+UPDATE DEPOSIT
+SET
+    AMOUNT = AMOUNT + (AMOUNT * 10 / 100)
+WHERE CNAME IN(
+        SELECT CNAME
+        FROM CUSTOMERS
+        WHERE
+            CITY = "NAGPUR"
+    )
+    AND BNAME IN (
+        SELECT BNAME
+        FROM BRANCH
+        WHERE BNAME = "BOMBAY"
+    );
 
 
 
