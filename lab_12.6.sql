@@ -2,8 +2,8 @@ CREATE DATABASE IF NOT EXISTS c4;
 
 USE c4;
 
-CREATE TABLE DEPOSIT (ACTNO VARCHAR(5) ,CNAME VARCHAR(18) , BNAME VARCHAR(18) , AMOUNT INT ,ADATE DATE);
-INSERT INTO DEPOSIT
+CREATE TABLE Hetav_Deposit (ACTNO VARCHAR(5) ,CNAME VARCHAR(18) , BNAME VARCHAR(18) , AMOUNT INT ,ADATE DATE);
+INSERT INTO Hetav_Deposit
 VALUES
 ("100", "ANIL", "VRCE", 1000.00, 19950301),
 ("101", "SUNIL", "AJNI", 5000.00, 19960104),
@@ -15,11 +15,8 @@ VALUES
 ("108", "KRANTI", "NEHRU PLACE", 5000.00, 19950702),
 ("109", "MINU", "POWAI", 7000.00, 20000810);
 
-DROP TABLE DEPOSIT;
-
-
-CREATE TABLE BRANCH(BNAME VARCHAR(18),CITY VARCHAR(18));
-INSERT INTO Branch
+CREATE TABLE Hetav_Branch(BNAME VARCHAR(18),CITY VARCHAR(18));
+INSERT INTO Hetav_Branch
 VALUES
 ("VRCE", "NAGPUR"),
 ("AJNI", "NAGPUR"),
@@ -33,8 +30,8 @@ VALUES
 ("POWAI", "BOMBAY");
 
 
-CREATE TABLE CUSTOMERS(CNAME VARCHAR(19)  PRIMARY KEY,CITY VARCHAR(18));
-INSERT INTO CUSTOMERS
+CREATE TABLE Hetav_Customers(CNAME VARCHAR(19)  PRIMARY KEY,CITY VARCHAR(18));
+INSERT INTO Hetav_Customers
 VALUES
 ("ANIL", "CALCUTTA"),
 ("SUNIL", "DELHI"),
@@ -48,8 +45,8 @@ VALUES
 ("NAREN", "BOMBAY");
 
 
-CREATE TABLE BORROW(LOANNO VARCHAR(5), CNAME VARCHAR(18) , BNAME VARCHAR(18), AMOUNT INT);
-INSERT INTO BORROW
+CREATE TABLE Hetav_Borrow(LOANNO VARCHAR(5), CNAME VARCHAR(18) , BNAME VARCHAR(18), AMOUNT INT);
+INSERT INTO Hetav_Borrow
 VALUES
 ("201", "ANIL", "VRCE", 1000.00),
 ("206", "MEHUL", "AJNI", 5000.00),
@@ -59,8 +56,8 @@ VALUES
 ("481", "KRANTI", "NEHRU PLACE", 3000.00);
 
 
-CREATE TABLE Job (job_id VARCHAR(15) ,job_title VARCHAR(30) , min_sal DECIMAL(7,2) , max_sal DECIMAL(7,2));
-INSERT INTO Job
+CREATE TABLE Hetav_Job (job_id VARCHAR(15) ,job_title VARCHAR(30) , min_sal DECIMAL(7,2) , max_sal DECIMAL(7,2));
+INSERT INTO Hetav_Job
 VALUES
 ("IT_PROG", "Programmer", 4000, 10000),
 ("MK_MGR", "Marketing manager", 9000, 15000),
@@ -70,8 +67,8 @@ VALUES
 ("COMP_OP", "Computer Operator", 1500, 3000);
 
 
-CREATE TABLE Employee (emp_no DECIMAL(3) ,emp_name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3));
-INSERT INTO Employee
+CREATE TABLE Hetav_Employee (emp_no DECIMAL(3) ,emp_name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3));
+INSERT INTO Hetav_Employee
 VALUES
 (101, "Smith", 800, NULL, 20),
 (102, "Snehal", 1600, 300, 25),
@@ -81,8 +78,8 @@ VALUES
 (106, "Sneha", 2450, 24500, 10),
 (107, "Anamika", 2975, NULL, 30);
 
-CREATE TABLE  DEPOSITERS (a_no VARCHAR(5) ,cname VARCHAR(15) ,bname VARCHAR(10) , amount DECIMAL(7,2), a_date DATE);
-INSERT INTO DEPOSITERS 
+CREATE TABLE  Hetav_Depositers (a_no VARCHAR(5) ,cname VARCHAR(15) ,bname VARCHAR(10) , amount DECIMAL(7,2), a_date DATE);
+INSERT INTO Hetav_Depositers 
 VALUES
 ("101", "Anil", "andheri", 7000, 20060101),
 ("102", "sunil", "virar", 5000, 20060715),
@@ -93,64 +90,64 @@ VALUES
 
 /* 1 */
 SELECT SUM(amount) FROM
-DEPOSITERS
+Hetav_Depositers
 WHERE a_date > 19960101;
 
 /* 2 */
 SELECT SUM(AMOUNT) FROM
-Customers
+Hetav_Customers
 INNER JOIN
-Deposit
-ON Deposit.CNAME = Customers.CNAME
+Hetav_Deposit
+ON Hetav_Deposit.CNAME = Hetav_Customers.CNAME
 WHERE City = "NAGPUR";
 
 /* 3 */
 SELECT MAX(AMOUNT) FROM
-Customers
+Hetav_Customers
 INNER JOIN
-Deposit
-ON Deposit.CNAME = Customers.CNAME
+Hetav_Deposit
+ON Hetav_Deposit.CNAME = Hetav_Customers.CNAME
 WHERE City = "BOMBAY";
 
 /* 4 */
 SELECT round(SUM(emp_sal)) as Sum, round(AVG(emp_sal)) as Average,
 round(MAX(emp_sal)) as Maximum, round(MIN(emp_sal)) as Minimum
 FROM
-Employee;
+Hetav_Employee;
 
 /* 5 */
 SELECT round(MAX(emp_sal)) as Maximum, round(MIN(emp_sal)) as Minimum,round(MAX(emp_sal) - MIN(emp_sal)) as Difference
 FROM
-Employee;
+Hetav_Employee;
 
 /* 6 */
-SELECT COUNT(ACTNO) as Employees_Hired FROM DEPOSIT
+SELECT COUNT(ACTNO) as Hetav_Employees_Hired FROM Hetav_Deposit
 WHERE ADATE >= 19950101 AND ADATE <= 19981231;
 
 /* 7 */
-SELECT round(AVG(EMP_SAL)) FROM EMPLOYEE 
+SELECT round(AVG(EMP_SAL)) FROM Hetav_Employee 
 GROUP BY DEPT_NO; 
 
 /* 8 */
-SELECT DEPT_NO,SUM(EMP_SAL) FROM EMPLOYEE GROUP BY 
+SELECT DEPT_NO,SUM(EMP_SAL) FROM Hetav_Employee GROUP BY 
 DEPT_NO; 
 
 /* 9 */
-SELECT AVG(EMP_SAL) FROM EMPLOYEE 
+SELECT AVG(EMP_SAL) FROM Hetav_Employee 
 GROUP BY DEPT_NO 
 HAVING AVG(EMP_SAL) > 2000; 
 
 /* 10 */
-SELECT DEPT_NO,SUM(EMP_SAL) FROM EMPLOYEE 
+SELECT DEPT_NO,SUM(EMP_SAL) FROM Hetav_Employee 
 GROUP BY DEPT_NO 
 HAVING SUM(EMP_SAL) > 3000 
 ORDER BY SUM(EMP_SAL);
 
 /* 11 */
-SELECT D.B_NAME FROM DEPOSITE D , BRANCH B 
-WHERE D.B_NAME = B.BNAME AND B.CITY=’BOMBAY’ 
-GROUP BY D.B_NAME 
-HAVING SUM(D.AMMOUNT) > 5000; 
+SELECT D.BNAME FROM Hetav_Deposit D , Hetav_Branch B 
+WHERE D.BNAME = B.BNAME AND B.CITY='BOMBAY' 
+GROUP BY D.BNAME 
+HAVING SUM(D.AMOUNT) > 5000; 
 
 
 DROP DATABASE IF EXISTS c4;

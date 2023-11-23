@@ -2,13 +2,13 @@ CREATE DATABASE IF NOT EXISTS c4;
 
 USE c4;
 
-CREATE TABLE Job (job_id VARCHAR(15) ,job_title VARCHAR(30) , min_sal DECIMAL(7,2) , max_sal DECIMAL(7,2));
+CREATE TABLE Hetav_Job (job_id VARCHAR(15) ,job_title VARCHAR(30) , min_sal DECIMAL(7,2) , max_sal DECIMAL(7,2));
 
-CREATE TABLE Employee (emp_no DECIMAL(3) ,emp_name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3), job_id VARCHAR(15));
+CREATE TABLE Hetav_Employee (emp_no DECIMAL(3) ,emp_name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3), job_id VARCHAR(15));
 
-CREATE TABLE Deposit (a_no VARCHAR(5) ,cname VARCHAR(15) ,bname VARCHAR(10) , amount DECIMAL(7,2), a_date DATE);
+CREATE TABLE Hetav_Deposit (a_no VARCHAR(5) ,cname VARCHAR(15) ,bname VARCHAR(10) , amount DECIMAL(7,2), a_date DATE);
 
-INSERT INTO Employee
+INSERT INTO Hetav_Employee
 VALUES
 (101, "Smith", 800, NULL, 20, "IT_PROG"),
 (102, "Snehal", 1600, 300, 25, "MK_MGR"),
@@ -18,7 +18,7 @@ VALUES
 (106, "Sneha", 2450, 24500, 10, "COMP_OP");
 /* (107, "Anamika", 2975, NULL, 30, "LEC"); */
 
-INSERT INTO Job
+INSERT INTO Hetav_Job
 VALUES
 ("IT_PROG", "Programmer", 4000, 10000),
 ("MK_MGR", "Marketing manager", 9000, 15000),
@@ -27,7 +27,7 @@ VALUES
 ("LEC", "Lecturer", 6000, 17000),
 ("COMP_OP", "Computer Operator", 1500, 3000);
 
-INSERT INTO Deposit
+INSERT INTO Hetav_Deposit
 VALUES
 ("101", "Anil", "andheri", 7000, 20060101),
 ("102", "sunil", "virar", 5000, 20060715),
@@ -37,15 +37,15 @@ VALUES
 ("106", "mayur", "borivali", 5500, 20061221);
 
 CREATE TABLE Empoyee_Job AS 
-SELECT Employee.job_id, EMP_NAME, emp_no, job_title, emp_sal, Deposit.a_date FROM 
-EMPLOYEE 
+SELECT Hetav_Employee.job_id, EMP_NAME, emp_no, job_title, emp_sal, Hetav_Deposit.a_date FROM 
+Hetav_Employee 
 JOIN
-JOB
-ON Employee.job_id = Job.job_id
+Hetav_Job
+ON Hetav_Employee.job_id = Hetav_Job.job_id
 JOIN
-Deposit
-on Employee.emp_no = Deposit.a_no;
-/* Employee.job_id, EMP_NAME, emp_no, job_title, emp_sal, Deposit.a_date */
+Hetav_Deposit
+on Hetav_Employee.emp_no = Hetav_Deposit.a_no;
+/* Hetav_Employee.job_id, EMP_NAME, emp_no, job_title, emp_sal, Hetav_Deposit.a_date */
 
 SELECT * FROM Empoyee_Job;
 
@@ -70,7 +70,7 @@ SELECT
         LOWER(SUBSTRING(emp_name, 2))
     ) "Name",
     LENGTH(emp_name) "Length of Name"
-from Employee
+from Hetav_Employee
 WHERE
     emp_name LIKE "J%"
     OR emp_name LIKE "A%"
@@ -85,15 +85,15 @@ SELECT
         emp_sal,
         " monthly"
     ) AS Monthly_Income
-FROM Employee;
+FROM Hetav_Employee;
 
 /* 6 */
-SELECT CONCAT(EMP_NAME,' earns ',round(EMP_SAL),' monthly') FROM EMPLOYEE;
+SELECT CONCAT(EMP_NAME,' earns ',round(EMP_SAL),' monthly') FROM Hetav_Employee;
 
 
 /* 7 */
 SELECT
-emp_name AS 'Employee Name',
+emp_name AS 'Hetav_Employee Name',
 a_date AS 'Hire Date',
 TIMESTAMPDIFF(MONTH, a_date, CURDATE()) AS 'Months Employed',
 DAYNAME(a_date) AS 'Start Day'
@@ -104,7 +104,7 @@ ORDER BY FIELD(DAYNAME(a_date), 'Monday', 'Tuesday', 'Wednesday',
 /* 8 */
 SELECT
     emp_sal + COALESCE(emp_comm, 0) AS annual_compensation
-FROM Employee; 
+FROM Hetav_Employee; 
 
 
 DROP DATABASE IF EXISTS c4;

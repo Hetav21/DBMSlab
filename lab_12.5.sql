@@ -2,8 +2,8 @@ CREATE DATABASE IF NOT EXISTS c4;
 
 USE c4;
 
-CREATE TABLE DEPOSIT (ACTNO VARCHAR(5) ,CNAME VARCHAR(18) , BNAME VARCHAR(18) , AMOUNT INT ,ADATE DATE);
-INSERT INTO DEPOSIT
+CREATE TABLE Hetav_Deposit (ACTNO VARCHAR(5) ,CNAME VARCHAR(18) , BNAME VARCHAR(18) , AMOUNT INT ,ADATE DATE);
+INSERT INTO Hetav_Deposit
 VALUES
 ("100", "ANIL", "VRCE", 1000.00, 19950301),
 ("101", "SUNIL", "AJNI", 5000.00, 19960104),
@@ -16,8 +16,8 @@ VALUES
 ("109", "MINU", "POWAI", 7000.00, 19950810);
 
 
-CREATE TABLE BRANCH(BNAME VARCHAR(18),CITY VARCHAR(18));
-INSERT INTO Branch
+CREATE TABLE Hetav_Branch(BNAME VARCHAR(18),CITY VARCHAR(18));
+INSERT INTO Hetav_Branch
 VALUES
 ("VRCE", "NAGPUR"),
 ("AJNI", "NAGPUR"),
@@ -46,8 +46,8 @@ VALUES
 ("NAREN", "BOMBAY");
 
 
-CREATE TABLE BORROW(LOANNO VARCHAR(5), CNAME VARCHAR(18) , BNAME VARCHAR(18), AMOUNT INT);
-INSERT INTO BORROW
+CREATE TABLE Hetav_Borrow(LOANNO VARCHAR(5), CNAME VARCHAR(18) , BNAME VARCHAR(18), AMOUNT INT);
+INSERT INTO Hetav_Borrow
 VALUES
 ("201", "ANIL", "VRCE", 1000.00),
 ("206", "MEHUL", "AJNI", 5000.00),
@@ -57,19 +57,19 @@ VALUES
 ("481", "KRANTI", "NEHRU PLACE", 3000.00);
 
 
-CREATE TABLE Job (job_id VARCHAR(15) ,job_title VARCHAR(30) , min_sal DECIMAL(7,2) , max_sal DECIMAL(7,2));
-INSERT INTO Job
+CREATE TABLE Hetav_Job (job_id VARCHAR(15) ,job_title VARCHAR(30) , min_sal DECIMAL(7,2) , max_sal DECIMAL(7,2));
+INSERT INTO Hetav_Job
 VALUES
 ("IT_PROG", "Programmer", 4000, 10000),
-("MK_MGR", "Marketing manager", 9000, 15000),
-("FI_MGR", "Finance manager", 8200, 12000),
+("MK_MGR", "Marketing Hetav_Manager", 9000, 15000),
+("FI_MGR", "Finance Hetav_Manager", 8200, 12000),
 ("FI_ACC", "Account", 4200, 9000),
 ("LEC", "Lecturer", 6000, 17000),
 ("COMP_OP", "Computer Operator", 1500, 3000);
 
 
-CREATE TABLE Employee (emp_no DECIMAL(3) ,emp_name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3), CITY VARCHAR(18));
-INSERT INTO Employee
+CREATE TABLE Hetav_Employee (emp_no DECIMAL(3) ,emp_name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3), CITY VARCHAR(18));
+INSERT INTO Hetav_Employee
 VALUES
 (101, "Smith", 800, NULL, 20, "CALCUTTA"),
 (102, "Snehal", 1600, 300, 25, "DELHI"),
@@ -79,8 +79,8 @@ VALUES
 (106, "Sneha", 2450, 24500, 10, "SURAT"),
 (107, "Anamika", 2975, NULL, 30, "BOMBAY");
 
-CREATE TABLE Manager (mngr_no DECIMAL(3) ,name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3), CITY VARCHAR(18));
-INSERT INTO Manager
+CREATE TABLE Hetav_Manager (mngr_no DECIMAL(3) ,name VARCHAR(30) ,emp_sal DECIMAL(8,2) , emp_comm DECIMAL(6, 1), dept_no DECIMAL(3), CITY VARCHAR(18));
+INSERT INTO Hetav_Manager
 VALUES
 (102, "Smith", 800, NULL, 20, "CALCUTTA"),
 (106, "Snehal", 1600, 300, 25, "DELHI"),
@@ -90,8 +90,8 @@ VALUES
 (107, "Sneha", 2450, 24500, 10, "SURAT"),
 (104, "Anamika", 2975, NULL, 30, "BOMBAY");
 
-CREATE TABLE  DEPOSITERS (a_no VARCHAR(5) ,cname VARCHAR(15) ,bname VARCHAR(10) , amount DECIMAL(7,2), a_date DATE);
-INSERT INTO DEPOSITERS 
+CREATE TABLE  Hetav_Depositers (a_no VARCHAR(5) ,cname VARCHAR(15) ,bname VARCHAR(10) , amount DECIMAL(7,2), a_date DATE);
+INSERT INTO Hetav_Depositers 
 VALUES
 ("101", "Anil", "andheri", 7000, 20060101),
 ("102", "sunil", "virar", 5000, 20060715),
@@ -100,8 +100,8 @@ VALUES
 ("105", "keyur", "dadar", 7500, 20061119),
 ("106", "mayur", "borivali", 5500, 20061221);
 
-CREATE TABLE EMP_NEW (emp_no VARCHAR(5) ,emp_name VARCHAR(18) , BNAME VARCHAR(18) , AMOUNT INT ,joinDate DATE, a_no INT DEFAULT NULL);
-INSERT INTO EMP_NEW
+CREATE TABLE Hetav_EMP_NEW (emp_no VARCHAR(5) ,emp_name VARCHAR(18) , BNAME VARCHAR(18) , AMOUNT INT ,joinDate DATE, a_no INT DEFAULT NULL);
+INSERT INTO Hetav_EMP_NEW
 VALUES
 ("100", "ANIL", "VRCE", 1000.00, 19950301, 101),
 ("101", "SUNIL", "AJNI", 5000.00, 19960104, 102),
@@ -116,56 +116,56 @@ VALUES
 CREATE TABLE DEPARTMENT (emp_no VARCHAR(5) ,city VARCHAR(18));
 
 /* 1 */
-SELECT CUSTOMERS.CNAME, CITY, ACTNO, DEPOSIT.BNAME, DEPOSIT.AMOUNT, BORROW.AMOUNT ,ADATE, LOANNO FROM
+SELECT CUSTOMERS.CNAME, CITY, ACTNO, Hetav_Deposit.BNAME, Hetav_Deposit.AMOUNT, Hetav_Borrow.AMOUNT ,ADATE, LOANNO FROM
 CUSTOMERS
 INNER JOIN
-Deposit
-ON CUSTOMERS.CNAME = Deposit.CNAME
+Hetav_Deposit
+ON CUSTOMERS.CNAME = Hetav_Deposit.CNAME
 INNER JOIN
-BORROW
-ON CUSTOMERS.CNAME = Borrow.CNAME
+Hetav_Borrow
+ON CUSTOMERS.CNAME = Hetav_Borrow.CNAME
 WHERE CUSTOMERS.CNAME = "ANIL";
 
 /* 2 */
 SELECT customers.cname FROM
 customers
 INNER JOIN
-Deposit
-ON Deposit.CNAME = customers.CNAME
+Hetav_Deposit
+ON Hetav_Deposit.CNAME = customers.CNAME
 INNER JOIN
-BORROW
-ON Deposit.CNAME = Borrow.CNAME
+Hetav_Borrow
+ON Hetav_Deposit.CNAME = Hetav_Borrow.CNAME
 WHERE customers.CITY = "NAGPUR";
 
 /* 3 */
-SELECT C.CITY FROM CUSTOMERS as C, BRANCH as B 
+SELECT C.CITY FROM CUSTOMERS as C, Hetav_Branch as B 
 WHERE C.CITY=B.CITY;
 
 /* 4 */ 
 SELECT E.EMP_NAME,D.ACTNO 
-FROM EMP_NEW as E,Deposit as D 
+FROM Hetav_EMP_NEW as E,Hetav_Deposit as D 
 WHERE E.a_no = D.ACTNO;
 
 /* 5 */
-SELECT J.job_id,J.JOB_TITLE,E.DEPT_NO,D.CITY FROM JOB 
-J,EMPLOYEE E,DEPARTMENT D WHERE J.job_id=E.emp_no AND 
+SELECT J.job_id,J.JOB_TITLE,E.DEPT_NO,D.CITY FROM Hetav_Job 
+J,Hetav_Employee E,DEPARTMENT D WHERE J.job_id=E.emp_no AND 
 E.DEPT_NO=E.DEPT_NO AND E.DEPT_NO=30; 
 
 /* 6 */
-SELECT EMP_NAME , dept_no FROM EMPLOYEE 
+SELECT EMP_NAME , dept_no FROM Hetav_Employee 
 WHERE CITY = "RAJKOT";
 
 /* 7 */
-SELECT E.EMP_NAME as "EMPLOYEE",E.EMP_NO as "EMP #", M.name as "MANAGER",M.mngr_no as "MGR #"  
-FROM EMPLOYEE E, MANAGER M
+SELECT E.EMP_NAME as "Hetav_Employee",E.EMP_NO as "EMP #", M.name as "Hetav_Manager",M.mngr_no as "MGR #"  
+FROM Hetav_Employee E, Hetav_Manager M
 WHERE E.EMP_NO=M.mngr_no; 
 
 /* 8 */
 SELECT emp_name FROM
-EMP_NEW
+Hetav_EMP_NEW
 WHERE joinDate > (
     SELECT joinDate FROM 
-    EMP_NEW
+    Hetav_EMP_NEW
     WHERE emp_name = "SCOTT"
 );
 
