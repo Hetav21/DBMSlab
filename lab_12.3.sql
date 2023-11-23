@@ -93,37 +93,56 @@ SELECT COUNT(DISTINCT(CITY)) FROM Hetav_Customers;
 /* 6 */
 CREATE TABLE SUPPLIER AS SELECT * FROM Hetav_Employee;
 
+SELECT * FROM SUPPLIER;
+
 /* 7 */
 CREATE TABLE SUP1 AS SELECT emp_no , emp_name FROM Hetav_Employee; 
+
+SELECT * FROM SUP1;
 
 /* 8 */
 CREATE TABLE SUP2 AS SELECT * FROM Hetav_Employee WHERE 
 emp_comm IS NULL;
 
+SELECT * FROM SUP2;
+
 /* 9 */
 INSERT INTO SUP2 SELECT * FROM Hetav_Employee WHERE emp_name LIKE ('_n___');
+
+SELECT * FROM SUP2;
 
 /* 10 */
 TRUNCATE TABLE sup1;
 
+SELECT * FROM SUP1;
+
 /* 11 */
 DELETE FROM SUPPLIER WHERE emp_no=103; 
+
+SELECT * FROM SUPPLIER;
 
 /* 12 */
 ALTER TABLE sup2
 RENAME TO sup3;
 
+SELECT * FROM sup3;
+
 /* 13 */
 DROP TABLE SUP1;
+
 
 /* 14 */
 UPDATE Hetav_Employee 
 SET dept_no = 10 
 WHERE EMP_NAME LIKE ("_m%"); 
 
+SELECT * FROM Hetav_Employee;
+
 /* 15 */
 UPDATE Hetav_Employee 
 SET EMP_NAME= "HETAV"
 WHERE EMP_NO=103;
+
+SELECT * FROM Hetav_Employee;
 
 DROP DATABASE IF EXISTS c4;
