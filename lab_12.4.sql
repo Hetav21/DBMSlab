@@ -47,10 +47,6 @@ Hetav_Deposit
 on Hetav_Employee.emp_no = Hetav_Deposit.a_no;
 /* Hetav_Employee.job_id, EMP_NAME, emp_no, job_title, emp_sal, Hetav_Deposit.a_date */
 
-SELECT * FROM Empoyee_Job;
-
-DROP TABLE Empoyee_Job;
-
 /* 1 */
 SELECT CURRENT_DATE as Date ;
 
